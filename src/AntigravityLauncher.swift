@@ -40,9 +40,6 @@ final class AntigravityLauncher {
               let command = launchCommand(for: app.processIdentifier),
               !command.contains("--remote-debugging-port") else { return }
 
-        // shortcut: 仅在已实测的 2.34.0 上自动重启，升级后先验证界面兼容性再放开版本。
-        guard Bundle(url: appURL)?.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String == "2.34.0" else { return }
-
         let pid = app.processIdentifier
         pendingQuit = pid
         print("收到官方图标启动，准备正常退出一次，进程 \(pid)。")

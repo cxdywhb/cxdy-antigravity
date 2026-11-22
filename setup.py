@@ -20,7 +20,6 @@ LABEL = "local.antigravity.interface-enhancements"
 PLIST = HOME_ROOT / "Library/LaunchAgents" / f"{LABEL}.plist"
 DOMAIN = f"gui/{os.getuid()}"
 JOB = f"{DOMAIN}/{LABEL}"
-APP_VERSION = "2.34.0"
 BEGIN = "# >>> antigravity-desktop-enhancements >>>"
 END = "# <<< antigravity-desktop-enhancements <<<"
 
@@ -34,10 +33,8 @@ def prerequisites():
         raise ValueError("安装仅支持 macOS。")
     with (TARGET_APP / "Contents/Info.plist").open("rb") as source:
         info = plistlib.load(source)
-    if (info.get("CFBundleIdentifier"), info.get("CFBundleShortVersionString")) != (
-        "com.google.antigravity", APP_VERSION
-    ):
-        raise ValueError(f"请先安装官方 Antigravity {APP_VERSION} 到 /Applications。")
+    if info.get("CFBundleIdentifier") != "com.google.antigravity":
+        raise ValueError("请先安装官方 Antigravity 到 /Applications。")
     requirement = (
         'anchor apple generic and certificate leaf[subject.OU] = "EQHXZ8M8AV" '
         'and identifier "com.google.antigravity"'
