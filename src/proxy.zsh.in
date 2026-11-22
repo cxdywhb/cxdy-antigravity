@@ -1,0 +1,9 @@
+# >>> antigravity-desktop-enhancements >>>
+# 仅在 Antigravity 读取启动环境时提供本机代理。
+if [[ ${ANTIGRAVITY_RESOLVING_ENVIRONMENT:-} == 1 ]]; then
+  export HTTP_PROXY='http://127.0.0.1:@PORT@' HTTPS_PROXY='http://127.0.0.1:@PORT@'
+  export http_proxy="$HTTP_PROXY" https_proxy="$HTTPS_PROXY"
+  export NO_PROXY="localhost,127.0.0.1,::1${NO_PROXY:+,$NO_PROXY}${no_proxy:+,$no_proxy}"
+  export no_proxy="$NO_PROXY"
+fi
+# <<< antigravity-desktop-enhancements <<<
