@@ -2,6 +2,22 @@
 
 这套配置用于官方 Antigravity 2.34.0。点击 Mac 上原有的官方图标后，应用会正常重开一次，再加载窗口内的简体中文和 Context Viewer 看板。后端通过 Clash 的本地代理访问模型接口，TUN 可以关闭。
 
+## 交给 AI 安装
++
++把下面的提示词复制给能操作这台 Mac 终端的 AI 助手。
++
++```text
++请在这台 Mac 上安装 cxdy-antigravity。
++仓库地址：https://github.com/cxdywhb/cxdy-antigravity
++
++1. 获取仓库并阅读 README.md。先运行 python3 setup.py check，确认 /Applications/Antigravity.app 是带 Google 原始签名的官方 2.34.0，并检查 Node.js 和 Swift 编译工具。
++2. 查明当前 Clash 的 HTTP 或混合代理端口。保持 TUN 关闭，用 python3 setup.py install --port <实际端口> 安装到当前用户。沿用现有官方 App 和图标，使用安装脚本提供的用户级后台任务。
++3. 完全退出当前 Antigravity，然后从官方图标或官方 App 路径打开。允许启动后自动重开一次。验证简中导航和设置、模型列表、Context Viewer 额度面板与 Token 用量入口。验收只读检查界面和模型列表。
++4. 告诉我每项验证结果和如何卸载。如果版本、签名或已有安装检查失败，先报告具体原因。
++```
++
++
+
 ## 安装前
 
 - 安装官方 Antigravity 2.34.0，路径为 `/Applications/Antigravity.app`。Apple Silicon Mac 已完成实机验收。
